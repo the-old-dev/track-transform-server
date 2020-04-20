@@ -13,10 +13,13 @@
 /*eslint-env node*/
 
 var express = require('express');
+var Hello = require('./hello');
+
 var app = express();
+var helloObject = new Hello();
 
 app.get('/', function (req, res) {
-  res.send('Hello World, from che.openshift.io!');
+  res.send(helloObject.sayHello());
 });
 
 app.listen(3000, function () {
