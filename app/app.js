@@ -13,7 +13,7 @@
 /*eslint-env node*/
 
 var express = require('express');
-var Hello = require('./hello');
+var Hello = require('./Hello');
 
 var app = express();
 var helloObject = new Hello();
