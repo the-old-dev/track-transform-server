@@ -15,6 +15,8 @@
 var express = require('express');
 var Hello = require('./Hello');
 
+const PORT = process.env.PORT || 5000;
+
 var app = express();
 var helloObject = new Hello();
 
@@ -22,6 +24,6 @@ app.get('/hello', function (req, res) {
   res.send(helloObject.sayHello());
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(PORT, function () {
+  console.log('Example app listening on port:=' + PORT +'!');
 });
