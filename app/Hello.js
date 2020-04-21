@@ -1,6 +1,6 @@
 class Hello {
     sayHello() {
-       return 'Hello World, from che.openshift.io with an class in es6!';
+       return 'Hello World, from http://www.heroku.com with an class in es6!';
     }
 }
 
