@@ -18,7 +18,7 @@ var Hello = require('./Hello');
 var app = express();
 var helloObject = new Hello();
 
-app.get('/', function (req, res) {
+app.get('/hello', function (req, res) {
   res.send(helloObject.sayHello());
 });
 
