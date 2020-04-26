@@ -2,17 +2,28 @@
   "name": "wormnav-transform-server",
   "version": "0.0.1",
   "description": "",
+  "author": "",
+  "license": "EPL-2.0",
   "main": "app/app.js",
   "scripts": {
     "start": "node app/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "author": "",
-  "license": "EPL-2.0",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "leaflet": "*",
+    "gpx-parse": "~0.8.0"
+  },
+  "devDependencies": {
+    "jest": "25.2.7"
   },
   "engines": {
     "node": "10.x"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules"
+    ]
   }
 }
