@@ -1,16 +1,15 @@
 const gpxparse = require("gpx-parse");
+const GpxBounds = require("./GpxBounds");
 
 class GpxBoundsFactory {
 
     /**
-     * A bounds consits of two waypoints:
+     * A bounds consits of minimum and maximum latitude and longitude values:
      * 
-     * - waypoint[0] = the upper left edge point, called north-west
-     * - waypoint[1] =  the lower right edge point, called south-east
      * 
-     * @returns an array with the two waypoints 
+     * @returns GpxBounds
      * 
-     * @param {[GpxWaypoint, GpxWaypoint]} gpxWaypointsArray 
+     * @param {GpxWaypoint[]]} gpxWaypointsArray 
      */
     static createBounds(gpxWaypointsArray) {
 
@@ -36,7 +35,7 @@ class GpxBoundsFactory {
 
 		}
 		
-		return [new gpxparse.GpxWaypoint(maxLat, minLon), new gpxparse.GpxWaypoint(minLat, maxLon)];
+		return new GpxBounds(minLat, minLon, maxLat, maxLon);
     }
 
 }

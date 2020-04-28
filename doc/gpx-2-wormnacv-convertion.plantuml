@@ -19,7 +19,7 @@ GpxBoundsFactory --> Gpx2WormnavConverter : gpx bounds data
 
 Gpx2WormnavConverter --> Gpx2WormnavBoundsConverter : convert(gpx bounds edge data)
 Gpx2WormnavBoundsConverter --> Gpx2WormnavBoundsConverter : iterate edge points
-Gpx2WormnavBoundsConverter --> Gpx2WormnavPointConverter : convert (point data in radians , center point data in radians)
+Gpx2WormnavBoundsConverter --> Gpx2WormnavPointConverter : convert (gpx point data, center point data)
 Gpx2WormnavPointConverter --> Gpx2WormnavBoundsConverter : wormnav point data
 Gpx2WormnavBoundsConverter --> Gpx2WormnavConverter : wormnav bounds data
 
@@ -27,7 +27,7 @@ Gpx2WormnavConverter --> Gpx2WormnavConverter : get center radians form bounds
 
 Gpx2WormnavConverter --> Gpx2WormnavTrackConverter : convert (gpx track data)
 Gpx2WormnavTrackConverter --> Gpx2WormnavTrackConverter : Iterate trackpoints
-Gpx2WormnavTrackConverter --> Gpx2WormnavPointConverter : convert (point data in radians , center point data in radians)
+Gpx2WormnavTrackConverter --> Gpx2WormnavPointConverter : convert (point data, center point data)
 Gpx2WormnavPointConverter --> Gpx2WormnavTrackConverter : wormnav point data
 Gpx2WormnavTrackConverter --> Gpx2WormnavConverter : wormnav track data
 

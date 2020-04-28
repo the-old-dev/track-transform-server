@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.13.4",
     "leaflet": "*",
-    "gpx-parse": "~0.8.0"
+    "gpx-parse": "the-old-dev/gpx-parse"
   },
   "devDependencies": {
     "jest": "25.2.7"

@@ -7,12 +7,12 @@ const gpxparse = require("gpx-parse");
 * Wormnav Bounds Data Format: 
 *
 * The North-West (Upper-Left) Edge Point:
-* <li>bounds[0] = West Latitude {float [Wormnav]}
-* <li>bounds[1] = North Longitude {float [Wormnav]}
+* <li>bounds[0] = maxLatitude {float [Wormnav]}
+* <li>bounds[1] = minLongitude {float [Wormnav]}
 *
 * The South-East (Lower-Right) Edge Point:
-* <li>bounds[2] = East Latitude {float [Wormnav]}
-* <li>bounds[3] = South Latitude {float [Wormnav]}
+* <li>bounds[2] = minLatitude {float [Wormnav]}
+* <li>bounds[3] = maxLongitude {float [Wormnav]}
 *
 * The Center Point
 * <li>bounds[4] = center Latitude (flaot [Radian])
@@ -27,17 +27,28 @@ class Gpx2WormnavBoundsConverter {
     /**
      * Converts GPX Bounds to Wormnav Bounds
      * 
-     * @param {GpXWayPoint} northEastEdgePoint, the upper left, called north-west
-     * @param {GpXWayPoint} southWestEdgePoint, the lower right, called south-east 
+     * @param {GpxBounds} gpxBounds
      */
+    static convert( gpxBounds ) {
 
-        Todo : Do more Object orientation instead of [][][][]
+        var center =  gpxBounds.getCenter();
 
+        var wormnavUpperLeft = Gpx2WormnavPointConverter.convert(gpxBounds.northWest,center); 
+        var wormnavLowerRight = Gpx2WormnavPointConverter.convert(gpxBounds.southEast,center); 
+        var wormnavCenter = [center.lat.toRad(), center.lon.toRad()];
+        var wormnavDiagonalDistance = gpxBounds.getDiagonalDistance();
 
-    static convert(northEastEdgePoint, southWestEdgePoint) {
+        var wormnavData = new Array(7);
 
-        var northEastEdgePointInWormnav = Gpx2WormnavPointConverter.convert([northEastEdgePoint.lat.toRad()], )
-        
+        wormnavData[0] = wormnavUpperLeft[0];
+        wormnavData[1] = wormnavUpperLeft[1];
+        wormnavData[2] = wormnavLowerRight[0];
+        wormnavData[3] = wormnavLowerRight[1];
+        wormnavData[4] = wormnavCenter[0];
+        wormnavData[5] = wormnavCenter[1];
+        wormnavData[6] = wormnavDiagonalDistance;
+
+        return wormnavData;
 
     }
 

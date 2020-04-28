@@ -3,15 +3,12 @@ var Gpx2WormnavPointConverter = require("../../app/wormnav/Gpx2WormnavPointConve
 
 describe('Gpx2WormnavPointConverter Tests', () => {
 
-    var point = [...];
-    var centerInRadians = [...];
-    var expectedWormnavPoint = [...];
+    var point = new gpxParse.GpxWaypoint(51.163496, 10.447428);
+    var center = new gpxParse.GpxWaypoint(51.1633908, 10.4455304);
+    var expectedWormnavPoint = [0.00002076916, 0.000001836354];
 
     it('should convert one point correctly', () => {
-
-        var pointInRadians = [point[0].toRad(), point[1].toRad()];
-        var wormnavPoint = Gpx2WormnavPointConverter.convert(pointInRadians, centerInRadians)
-
+        var wormnavPoint = Gpx2WormnavPointConverter.convert(point, center);
         expect(wormnavPoint).toEqual(expectedWormnavPoint);
     });
 

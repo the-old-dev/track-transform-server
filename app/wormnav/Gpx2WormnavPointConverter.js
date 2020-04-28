@@ -10,25 +10,28 @@
  * @see {@link https://github.com/andan67/wormnav/blob/master/android/Application/src/main/java/org/andan/android/connectiq/wormnav/SendToDeviceUtility.java|point for wormnav}
  * 
  */
- class Gpx2WormnavPointConverter {
+class Gpx2WormnavPointConverter {
+
+    static convert(point, center) {
+        return Gpx2WormnavPointConverter._convert$FromRadians$(
+            point.lat.toRad(), point.lon.toRad(), center.lat.toRad(), center.lon.toRad());
+    }
 
     /**
      * 
      * @param {float[latitude, longitude]} pointInRadians 
      * @param {float[latitude, longitude]} centerInRadians 
      */
-    static convert(pointInRadians, centerInRadians) {
-
-        var pointLatitudeRadian = pointInRadians[0];
-        var pointLongitudeRadian = pointInRadians[1];
-
-        var centerLatitudeRadian = centerInRadians[0];
-        var centerLongitudeRadian = centerInRadians[1];
+    static _convert$FromRadians$(pointLatitudeRadian, pointLongitudeRadian, centerLatitudeRadian, centerLongitudeRadian) {
 
         var wormNavPoint = new Array(2);
 
+        // Calculate latitude
         wormNavPoint[0] = Math.cos(pointLatitudeRadian) * Math.sin(pointLongitudeRadian - centerLongitudeRadian);
-        wormNavPoint[1] = Math.cos(centerLatitudeRadian) * Math.sin(pointLatitudeRadian)
+        
+        // Calculate longitude
+        wormNavPoint[1] = 
+            Math.cos(centerLatitudeRadian) * Math.sin(pointLatitudeRadian)
             - Math.sin(centerLatitudeRadian) * Math.cos(pointLatitudeRadian)
             * Math.cos(pointLongitudeRadian - centerLongitudeRadian);
 
