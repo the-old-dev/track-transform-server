@@ -13,16 +13,15 @@
 /*eslint-env node*/
 
 var express = require('express');
-var Hello = require('./Hello');
+var helloHandler = require('./hello-handler');
+var garminHandler = require('./garmin-handler');
 
 const PORT = process.env.PORT || 5000;
 
 var app = express();
-var helloObject = new Hello();
 
-app.get('/hello', function (req, res) {
-  res.send(helloObject.sayHello());
-});
+app.get('/hello', helloHandler);
+app.get('/garmin', garminHandler);
 
 app.listen(PORT, function () {
   console.log('Example app listening on port:=' + PORT +'!');

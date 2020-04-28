@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "express": "^4.13.4",
-    "leaflet": "*",
-    "gpx-parse": "the-old-dev/gpx-parse"
+    "gpx-parse": "*",
+    "gpx2wormnav-converter": "the-old-dev/gpx2wormnav-converter"
   },
   "devDependencies": {
     "jest": "25.2.7"
