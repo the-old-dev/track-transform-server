@@ -39,13 +39,15 @@ const accessProtectionMiddleware = (req, res, next) => {
   }
 };
 
+// For scopes @see https://developers.google.com/people/v1/how-tos/authorizing
+
 // Set up passport strategy
 passport.use(new GoogleStrategy(
   {
     clientID:     process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
     callbackURL:  process.env.GOOGLE_OAUTH_TEST_APP_CALLBACK_URL,
-    scope: ['https://www.googleapis.com/auth/userinfo.profile	'],
+    scope: ['profile'],
     proxy: true
   },
   (accessToken, refreshToken, profile, cb) => {
