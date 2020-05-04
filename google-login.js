@@ -45,7 +45,7 @@ passport.use(new GoogleStrategy(
     clientID:     process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
     callbackURL:  process.env.GOOGLE_OAUTH_TEST_APP_CALLBACK_URL,
-    scope: ['email'],
+    scope: ['profile'],
     session: true,
   },
   (accessToken, refreshToken, profile, cb) => {
