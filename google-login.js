@@ -45,8 +45,7 @@ passport.use(new GoogleStrategy(
     clientID:     process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
     callbackURL:  process.env.GOOGLE_OAUTH_TEST_APP_CALLBACK_URL,
-    scope: ['profile'],
-    session: true,
+    proxy: true
   },
   (accessToken, refreshToken, profile, cb) => {
     console.log('Our user authenticated with Google, and Google sent us back this profile info identifying the authenticated user:', profile);
