@@ -4,13 +4,18 @@
   "description": "",
   "author": "",
   "license": "EPL-2.0",
-  "main": "app/app.js",
+  "main": "google-login.js",
   "scripts": {
-    "start": "node app/app.js",
+    "start": "node google-login.js",
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.13.4",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "oidc-provider": "^2.13.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-openid": "^0.4.0",
     "gpx-parse": "*",
     "gpx2wormnav-converter": "the-old-dev/gpx2wormnav-converter"
   },
