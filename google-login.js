@@ -40,14 +40,14 @@ const accessProtectionMiddleware = (req, res, next) => {
 };
 
 // For scopes @see https://developers.google.com/people/v1/how-tos/authorizing
-
+// For Drive @see https://developers.google.com/drive/api/v3/quickstart/nodejs
 // Set up passport strategy
 passport.use(new GoogleStrategy(
   {
     clientID:     process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
     callbackURL:  process.env.GOOGLE_OAUTH_TEST_APP_CALLBACK_URL,
-    scope: ['profile'],
+    scope: ['https://www.googleapis.com/auth/drive.metadata.readonly'],
     proxy: true
   },
   (accessToken, refreshToken, profile, cb) => {
