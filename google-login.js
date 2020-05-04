@@ -45,7 +45,7 @@ passport.use(new GoogleStrategy(
     clientID:     process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_ID,
     clientSecret: process.env.GOOGLE_OAUTH_TEST_APP_CLIENT_SECRET,
     callbackURL:  process.env.GOOGLE_OAUTH_TEST_APP_CALLBACK_URL,
-    scope: ['https://www.googleapis.com/auth/drive.file'],
+    scope: ['drive'],
     proxy: true
   },
   (accessToken, refreshToken, profile, cb) => {
@@ -62,18 +62,6 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/', session: true }),
   (req, res) => {
     console.log('wooo we authenticated, here is our user object:', req.user);
-    // res.json(req.user);
-    const htmlWithEmbeddedJWT = `
-    <html>
-      <script>
-        // Save JWT to localStorage
-        window.localStorage.setItem('JWT', 'my-jwt');
-        // Redirect browser to root of application
-        window.location.href = '/';
-      </script>
-    </html>
-    `;
-
     res.send(req.user);
   }
 );
