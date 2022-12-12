@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "oidc-provider": "^2.13.0",
     "passport": "^0.4.1",
